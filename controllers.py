@@ -1,8 +1,12 @@
 # coding: utf-8
 
 import tornado.web
-import settings
 import snspy
+
+APP_KEY = '757112173'
+APP_SECRET = '0d096ef25b49ecb931e806d0cc7a558b'
+callback = 'https://api.weibo.com/oauth2/default.html'
+expires = 1393739173.5
 
 
 class Base(tornado.web.RequestHandler):
@@ -13,8 +17,8 @@ class Base(tornado.web.RequestHandler):
 
     access_token = '2.00bjSVJC0f9lOpf3f7c8c2260KATlY'
     client = snspy.APIClient(snspy.SinaWeiboMixin,
-                   app_key=settings.APP_KEY, app_secret=settings.APP_SECRET, redirect_uri=settings.callback,
-                   access_token=access_token, expires=settings.expires)
+                   app_key=APP_KEY, app_secret=APP_SECRET, redirect_uri=callback,
+                   access_token=access_token, expires=expires)
 
 class PublictimelineHandler(Base):
     def get(self):
