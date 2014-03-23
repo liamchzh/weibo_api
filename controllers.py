@@ -22,4 +22,5 @@ class Base(tornado.web.RequestHandler):
 
 class PublictimelineHandler(Base):
     def get(self):
-        return self.client.statuses.public_timeline.get()
+        tiemlines = self.client.statuses.public_timeline.get()
+        self.write(tiemlines)
