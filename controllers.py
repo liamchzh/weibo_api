@@ -23,6 +23,6 @@ class Base(tornado.web.RequestHandler):
 class PublictimelineHandler(Base):
     def get(self):
         timelines = self.client.statuses.public_timeline.get()
-	print isinstance(timelines, str)
-        #self.write(unicode(timelines, "utf-8"))
+        self.set_header('Content-Type', 'application/json; charset=UTF-8')
+        # self.render("index.html", timelines=timelines)
         self.write(timelines)
